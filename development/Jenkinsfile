@@ -32,7 +32,7 @@ node {
 //    withSonarQubeEnv('Sonar') { 
 //        sh 'mvn sonar:sonar'
 //    }     
- }
+//  }
 
   stage('Build Managment') {
       def uploadSpec = """{
