@@ -28,11 +28,11 @@ node {
     sh label: '', script: 'mvn package'
   }
    
-  stage('SonarQube analysis' ) {
-    withSonarQubeEnv('Sonar') { 
-        sh 'mvn sonar:sonar'
-    }     
-  }
+//  stage('SonarQube analysis' ) {
+//    withSonarQubeEnv('Sonar') { 
+//        sh 'mvn sonar:sonar'
+//    }     
+ }
 
   stage('Build Managment') {
       def uploadSpec = """{
