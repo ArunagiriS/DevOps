@@ -39,7 +39,7 @@ node {
 	 "files": [
 	{
 	"pattern": "**/*.war",
-	"target": "libs-snapshot"
+	"target": "Generic-Artifactory"
         }
 	]
 	}"""
