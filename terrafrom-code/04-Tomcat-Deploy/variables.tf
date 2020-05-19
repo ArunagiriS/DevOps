@@ -1,5 +1,5 @@
 variable "key_name" {
-  default = "mykey-test-1"
+  default = "terraform-test-1"
 }
 
 variable "pvt_key" {
