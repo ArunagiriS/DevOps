@@ -8,30 +8,28 @@ node {
     git branch: 'production', url: 'https://github.com/ArunagiriS/DevOps.git'
   }
 
-  def project_path = "terrafrom-code/04-Tomcat-Deploy/ansible-code/05-Tomcat/"
+  def project_path = "ansible-code/03-Apache/"
 
   dir(project_path) {
-   stage('Build Managment') {
-       def downloadSpec = """{
-         "files": [
-             {
-                "pattern": "Generic-Artifactory/*.war",
-                "target": "files/"
-             }
+	stage('Build Managment') {
+       		def downloadSpec = """{
+         	"files": [
+             		{
+                	"pattern": "Generic-Artifactory/*.war",
+               	 	"target": "files/"
+             		}
 			]
-        }"""
-        server.download spec: downloadSpec
+        	}"""
+        	server.download spec: downloadSpec
+	}
+	
+	stage('Geting Ready For Ansible') {
+		sh label: 'Jenkins', script: "echo '<h1> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h1>' > files/index.html"
+	}
 
-
-}
- stage('Geting Ready For Ansible') {
-  sh label: 'Jenkins', script: "echo '<h1> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h1>' > files/jenkins.html"
-}
-
-// stage('Petclinic Ansible Deployment - PROD') {
-//            sh label: '', script: 'ansible-playbook playbook.yaml'
-//        }
-
+	stage('Petclinic Ansible Deployment - PROD') {
+	        sh label: '', script: 'ansible-playbook playbook.yaml'
+        }
 
  }
 	
