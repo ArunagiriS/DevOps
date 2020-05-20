@@ -11,35 +11,36 @@ node {
   def project_path = "ansible-code/03-Apache/"
 
   dir(project_path) {
-	stage('Build Managment') {
-       		def downloadSpec = """{
-         	"files": [
-             		{
-                	"pattern": "Generic-Artifactory/*.war",
-               	 	"target": "files/"
-             		}
-			]
-        	}"""
-        	server.download spec: downloadSpec
-	}
 	
 	stage('Geting Ready For Ansible') {
 		sh label: 'Jenkins', script: "echo '<h1> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h1>' > files/index.html"
 	}
 
-	stage('Petclinic Ansible Deployment - PROD') {
+	stage('Ansible Apache Deployment - PROD') {
 	        sh label: '', script: 'ansible-playbook playbook.yaml'
         }
 
  }
 	
-def project_terra="terrafrom-code/04-Tomcat-Deploy"
-dir(project_terra) {
-   stage('Prod Deployment on AWS'){
-   sh label: 'terraform', script: 'terraform  init'
-   sh label: 'terraform', script: 'terraform  apply -input=false -auto-approve'
-   }
-}
+ def project_terra="terrafrom-code/04-Tomcat-Deploy"
+ 
+ dir(project_terra) {
+	
+	stage('Build Managment') {
+		def downloadSpec = """{
+			"files": [{
+					"pattern": "Generic-Artifactory/*.war",
+					"target": "ansible-code/05-Tomcat/files/"
+				}]
+			}"""
+		server.download spec: downloadSpec
+	}
+
+ 	stage('Prod Deployment on AWS'){
+ 		sh label: 'terraform', script: 'terraform  init'
+   		sh label: 'terraform', script: 'terraform  apply -input=false -auto-approve'
+   	}
+ }
 	
 
 }
