@@ -1,5 +1,5 @@
 variable "key_name" {
-  default = "terraform-test-1"
+  default = "Terraform-key"
 }
 
 variable "pvt_key" {
@@ -11,5 +11,5 @@ variable "us-east-zones" {
 }
 
 variable "sg-id" {
-  default = "sg-08159f58615809380"
+  default = "sg-024e1ebb6583e61b0"
 }
