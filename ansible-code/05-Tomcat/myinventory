@@ -8,8 +8,8 @@
 
 [dc:children]
 petclinic
-
+web
 
 [dc:vars]
-ansible_ssh_user=root
-ansible_ssh_pass=root
+ansible_ssh_user=vmadminwer
+ansible_ssh_pass=Applesett234@
