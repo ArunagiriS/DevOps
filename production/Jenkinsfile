@@ -6,18 +6,18 @@ node {
 
   stage('GIT CheckOut') {
     git branch: 'production', url: 'https://github.com/ArunagiriS/DevOps.git'
-  }
-
-  def project_path = "ansible-code/03-Apache/"
-
-  dir(project_path) {
-	
-	stage('Geting Ready For Ansible') {
-		sh label: 'Jenkins', script: "echo '<h1> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h1>' > files/index.html"
 	}
 
-	stage('Ansible Apache Deployment - PROD') {
-	        sh label: '', script: 'ansible-playbook playbook.yaml'
+  def pr
+
+  dioject_path = "ansible-code/03-Apache/"(project_path) {
+	
+	stage('Geting Ready For Ansible') {
+		sh label: 'Jenkins', script: "echo '<html><h1> Welcome to DevOps Ansible Apache Deployment </h1><h3> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h3></html>' > files/index.html"
+			}
+
+	stage('
+	        soymenAnsible Apache Depl - PROD') { label: '', script: 'ansible-playbook playbook.yaml'
         }
 
  }
