@@ -28,7 +28,7 @@ node {
 
 	stage('Geting Ready For Ansible') {
 
-		sh label: 'Jenkins', script: "echo '<html><h3> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h3></html' > files/index.html"
+	sh label: 'Jenkins', script: "echo '<html><h1>Welcome all to DevOps Ansible Apache Deployment</h1><h3> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h3></html' > files/index.html"
 
 	}
 
