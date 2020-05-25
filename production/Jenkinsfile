@@ -17,7 +17,7 @@ node {
 			}
 
 	stage('soymenAnsible Apache Depl - PROD') { 
-		label: '', script: 'ansible-playbook playbook.yaml'
+		sh label: '', script: 'ansible-playbook playbook.yaml'
         }
 
  }
