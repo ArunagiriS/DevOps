@@ -15,7 +15,7 @@ node {
 		sh label: 'Jenkins', script: "echo '<html><h1> Welcome to DevOps Ansible Apache Deployment </h1><h3> TASK BUILD ID: ${env.BUILD_DISPLAY_NAME}</h3></html>' > files/index.html"
 			}
 
-	stage('soymenAnsible Apache Depl - PROD') { 
+	stage('Ansible Apache Deployment - PROD') { 
 		sh label: '', script: 'ansible-playbook playbook.yaml'
         }
 
